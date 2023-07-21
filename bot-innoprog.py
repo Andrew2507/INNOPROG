@@ -21,10 +21,9 @@ class Form(StatesGroup):
 
 
 @dp.message_handler(commands=["start"])
-async def cmd_start(message: types.Message, callback_query):
+async def cmd_start(message: types.Message):
     keyboard = InlineKeyboardMarkup(row_width=1)
     btn1 = InlineKeyboardButton("О нас", callback_data="about")
-    await bot.delete_message(callback_query.message.chat.id, callback_query.message.message_id)
     btn2 = InlineKeyboardButton("Подписка", url="https://innoprog.ru/#tariff")
     btn3 = InlineKeyboardButton("Игра", url="https://whaile.ru/")
     btn4 = InlineKeyboardButton("Поддержка", callback_data="support")
