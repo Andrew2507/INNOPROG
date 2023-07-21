@@ -56,29 +56,12 @@
 		</div>
 	</div>
 	
-	<div class="get-started">
+	<div class="get-started" style="height: 900px;">
         <p class="header" style="color: #000;">Игра:</p>
 		<p class="info-text" style="color: #000; font-size: 25px;">В нашей игре вам нужно проявить логику, и выбрать правильный код!</p>
-        <div class="items-box" style="
-    padding: 60px 80px;
-    position: relative;
-    display: grid;
-    grid-template-columns: auto auto auto auto;
-    grid-column-gap: 0px;
-    grid-row-gap: 0px;
-    justify-content: center;
-">
-            <div class="item-container" style="
-    padding: 16px;
-    border: 1px solid #000;
-    background: linear-gradient(170deg, rgba(52, 93, 129, 0.08) 1.85%, rgba(57, 46, 75, 0.08) 98%);
-    border-radius: 2rem;">
-                <div style="width: 100%; height: 100%; position: absolute;">
-					<!-- Встроенный фрейм для отображения игры -->
-					<iframe src="game/index.html" width="100%" height="100%" frameborder="0"></iframe>
-				</div>
-            </div>
-        </div>
+		<br><br>
+		<!-- Встроенный фрейм для отображения игры -->
+		<iframe src="game/index.html" width="100%" height="100%" frameborder="0"></iframe>
     </div>
 
 	<a id="onas"></a>
@@ -96,7 +79,7 @@
                 <div class="item">
                     <i class='bx bx-wallet-alt'></i>
                 </div>
-                <p>Интуетивный интерфейс</p>
+                <p>Интуитивный интерфейс</p>
             </div>
             <div class="item-container">
                 <div class="item">
@@ -108,7 +91,7 @@
                 <div class="item">
                     <i class='bx bx-rocket'></i>
                 </div>
-                <p>Не заёмёт много времени</p>
+                <p>Не займёт много времени</p>
             </div>
         </div>
     </div>
