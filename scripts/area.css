@@ -56,29 +56,6 @@ body{
 .main{
     padding: 0 88px;
     position: relative;
-    background-color: #221f2f;
-}
-
-.main::before{
-    content: "";
-    position: absolute;
-    width: 120px;
-    height: 120px;
-    left: 55%;
-    top: 20%;
-    background-color: #ed2ff0;
-    filter: blur(90px);
-}
-
-.main::after{
-    content: "";
-    position: absolute;
-    width: 120px;
-    height: 120px;
-    left: 80%;
-    top: 44%;
-    background-color: #22a8cd;
-    filter: blur(90px);
 }
 
 .main .top-container{
@@ -435,7 +412,7 @@ body{
 
 .content main{
     width: 100%;
-    padding: 36px 24px;
+    padding: 36px 0px;
     max-height: calc(100vh - 56px);
 }
 
