@@ -1,3 +1,5 @@
+# t.me/itzinnoprog_bot    бот в тг
+
 # -*- coding: utf-8 -*-
 import logging
 
