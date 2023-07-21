@@ -38,7 +38,9 @@
             </p>
             <div class="info-buttons">
                 <button id="scroll" class="info-btn selected">Начать</button>
-                <button id="scroll" class="info-btn nav-btn" style="white-space: nowrap;"><a href="#onas" style="color: #fff; text-decoration: none;">О нас</a></button>
+                <button id="scrollToOnas" class="info-btn nav-btn" style="white-space: nowrap;">
+					<span>О нас</span>
+				</button>
             </div>
         </div>
 		<div class="nft-box" id="nftBox">
@@ -80,7 +82,7 @@
         </div>
     </div>
 
-	<a name="onas"></a>
+	<a id="onas"></a>
     <div class="get-started">
         <p class="header" style="color: #000;">О нашей мини-игре</p>
         <p class="info-text">Игра создана в целях привлечения новых клиентов</p>
@@ -185,6 +187,28 @@
 
 
 <script src="./scripts/index.js"></script>
+
+<script>
+    // Функция для плавной прокрутки до указанного элемента
+    function smoothScrollTo(target) {
+        const targetElement = document.querySelector(target);
+        if (targetElement) {
+            window.scrollTo({
+                top: targetElement.offsetTop,
+                behavior: 'smooth'
+            });
+        }
+    }
+
+    // Обработчик клика на кнопке "О нас"
+    const onasButton = document.getElementById('scrollToOnas');
+    if (onasButton) {
+        onasButton.addEventListener('click', function (event) {
+            event.preventDefault();
+            smoothScrollTo('#onas'); // Прокрутка до элемента с идентификатором "onas"
+        });
+    }
+</script>
 
 </body>
 </html>
