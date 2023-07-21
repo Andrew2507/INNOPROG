@@ -54,7 +54,7 @@ if ($allowed) {
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="./scripts/area.css">
 	<link rel="icon" href="img/logo.png" type="image/x-icon">
-    <title>HDWcaptcha | _whaile_</title>
+    <title>INNOPROG | Стать айтишником ЛЕГЧЕ, чем вам кажется</title>
 </head>
 
 <body>

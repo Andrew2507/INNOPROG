@@ -38,7 +38,7 @@
             </p>
             <div class="info-buttons">
                 <button id="scroll" class="info-btn selected">Начать</button>
-                <button id="scrollToOnas" class="info-btn nav-btn" style="white-space: nowrap;">Telegram</button>
+                <button class="info-btn nav-btn" style="white-space: nowrap;"><a href="https://t.me/itzinnoprog_bot" style="color: #fff; text-decoration: none;">Telegram - бот</a></button>
             </div>
         </div>
 		<div class="nft-box" id="nftBox">
@@ -75,7 +75,7 @@
     border-radius: 2rem;">
                 <div style="width: 100%; height: 100%; position: absolute;">
 					<!-- Встроенный фрейм для отображения игры -->
-					<iframe src="путь_к_вашему_индексному_файлу/index.html" width="100%" height="100%" frameborder="0"></iframe>
+					<iframe src="game/index.html" width="100%" height="100%" frameborder="0"></iframe>
 				</div>
             </div>
         </div>

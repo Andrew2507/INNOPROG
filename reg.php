@@ -54,8 +54,8 @@ $conn->close();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="../scripts/style.css">
-	<link rel="icon" href="../img/logo.png" type="image/x-icon">
-    <title>HDWcaptcha | _whaile_</title>
+	<link rel="icon" href="./img/logo.png" type="image/x-icon">
+    <title>INNOPROG | Стать айтишником ЛЕГЧЕ, чем вам кажется</title>
 </head>
 <body>
 <div class="main">
