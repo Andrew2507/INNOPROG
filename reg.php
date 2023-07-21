@@ -1,12 +1,61 @@
+<?php
+$servername = "65.21.114.251";
+$username = "microsoft2";
+$password = "Astra78563412!";
+$dbname = "microsoft2";
+
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+if ($conn->connect_error) {
+    die("Ошибка подключения: " . $conn->connect_error);
+}
+
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
+    $login = $_POST["login"];
+    $password = $_POST["password"];
+
+    $checkUserQuery = "SELECT * FROM microsoft WHERE username = ?";
+    $stmt = $conn->prepare($checkUserQuery);
+    $stmt->bind_param("s", $login);
+    $stmt->execute();
+    $result = $stmt->get_result();
+
+    if ($result->num_rows > 0) {
+        echo "<script>alert('Пользователь с таким логином уже существует');</script>";
+    } else {
+        $hashedPassword = password_hash($password, PASSWORD_DEFAULT); // Хешируем пароль
+        $insertUserQuery = "INSERT INTO microsoft (username, password) VALUES (?, ?)";
+        $stmt = $conn->prepare($insertUserQuery);
+        $stmt->bind_param("ss", $login, $hashedPassword);
+
+        if ($stmt->execute()) {
+            // Добавляем скидку 10% для нового пользователя
+            $discount = 10;
+            $insertDiscountQuery = "INSERT INTO microsoftsell (username, sell) VALUES (?, ?)";
+            $stmt = $conn->prepare($insertDiscountQuery);
+            $stmt->bind_param("si", $login, $discount);
+            $stmt->execute();
+
+            header("Location: https://whaile.ru/area.php?login=$login");
+            exit;
+        } else {
+            echo "<script>alert('Ошибка при регистрации');</script>";
+        }
+    }
+}
+
+$conn->close();
+?>
+
 <!DOCTYPE html>
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-    <link rel="stylesheet" href="./scripts/style.css">
-	<link rel="icon" href="img/logo.png" type="image/x-icon">
-    <title>INNOPROG | Стать айтишником ЛЕГЧЕ, чем вам кажется</title>
+    <link rel="stylesheet" href="../scripts/style.css">
+	<link rel="icon" href="../img/logo.png" type="image/x-icon">
+    <title>HDWcaptcha | _whaile_</title>
 </head>
 <body>
 <div class="main">
@@ -27,91 +76,25 @@
             <i class='bx bx-menu'></i>
         </button>
     </div>
-
-    <div class="top-container">
-        <div class="info-box">
-            <h1 class="header" style="color: #000;">
-                Пройдите нашу мини-игру и испытайте свои силы!
-            </h1>
-            <p class="info-text" style="color: #000;">
-                Узнайте насколько вы подходите для нас.
-            </p>
-            <div class="info-buttons">
-                <button id="scroll" class="info-btn selected">Начать</button>
-                <button id="scrollToOnas" class="info-btn nav-btn" style="white-space: nowrap;">Telegram</button>
-            </div>
-        </div>
-		<div class="nft-box" id="nftBox">
-			<img src="./img/osnov.png" class="nft-pic">
-			<div class="nft-content">
-				<div class="info">
-					<div>
-						<p style="color: #000;font-size: 20px;">Основатель</p>
-					</div>
-				</div>
-				<div class="likes">
-					<div class="icon-box" style="color: #000;font-size: 20px;color: #9c78ff;">INNOPROG</div>
-				</div>
-			</div>
-		</div>
-	</div>
 	
-	<div class="get-started">
-        <p class="header" style="color: #000;">Игра:</p>
-		<p class="info-text" style="color: #000; font-size: 25px;">В нашей игре вам нужно проявить логику, и выбрать правильный код!</p>
-        <div class="items-box" style="
-    padding: 60px 80px;
-    position: relative;
-    display: grid;
-    grid-template-columns: auto auto auto auto;
-    grid-column-gap: 0px;
-    grid-row-gap: 0px;
-    justify-content: center;
-">
-            <div class="item-container" style="
-    padding: 16px;
-    border: 1px solid #000;
-    background: linear-gradient(170deg, rgba(52, 93, 129, 0.08) 1.85%, rgba(57, 46, 75, 0.08) 98%);
-    border-radius: 2rem;">
-                <div style="width: 100%; height: 100%; position: absolute;">
-					<!-- Встроенный фрейм для отображения игры -->
-					<iframe src="путь_к_вашему_индексному_файлу/index.html" width="100%" height="100%" frameborder="0"></iframe>
-				</div>
-            </div>
-        </div>
-    </div>
+    <div class="top-container">
+		<div class="nft-nobox"></div>
 
-	<a id="onas"></a>
-    <div class="get-started">
-        <p class="header" style="color: #000;">О нашей мини-игре</p>
-        <p class="info-text">Игра создана в целях привлечения новых клиентов</p>
-        <div class="items-box">
-            <div class="item-container">
-                <div class="item">
-                    <i class='bx bx-check-shield'></i>
-                </div>
-                <p>Простота использования</p>
-            </div>
-            <div class="item-container">
-                <div class="item">
-                    <i class='bx bx-wallet-alt'></i>
-                </div>
-                <p>Интуетивный интерфейс</p>
-            </div>
-            <div class="item-container">
-                <div class="item">
-                    <i class='bx bx-money'></i>
-                </div>
-                <p>Использование unity</p>
-            </div>
-            <div class="item-container">
-                <div class="item">
-                    <i class='bx bx-rocket'></i>
-                </div>
-                <p>Не заёмёт много времени</p>
-            </div>
-        </div>
-    </div>
+		<div class="auth-box">
+			<p class="header" style="padding: 20px 0px 20px 10px; color: #000;">Создать аккаунт</p>
+			<form class="login-form" method="post" action="reg.php">
+				<input type="text" name="login" placeholder="Логин">
+				<input type="password" name="password" placeholder="Пароль">
+				<a href="https://vk.com/whaile_off_2" style="color: #000;">Забыли свой пароль?</a>
+				<button type="submit">Создать аккаунт</button>
+				<button><a href="../login.php" style="color: #ccc; text-decoration: none;">Войти</a></button>
+			</form>
+		</div>
+			
+		<div class="nft-nobox"></div>
+	</div>
+
+	<br><br><br><br><br><br>
 </div>
 
     <!-- Подвал -->
@@ -186,28 +169,5 @@
 
 
 <script src="./scripts/index.js"></script>
-
-<script>
-    // Функция для плавной прокрутки до указанного элемента
-    function smoothScrollTo(target) {
-        const targetElement = document.querySelector(target);
-        if (targetElement) {
-            window.scrollTo({
-                top: targetElement.offsetTop,
-                behavior: 'smooth'
-            });
-        }
-    }
-
-    // Обработчик клика на кнопке "О нас"
-    const onasButton = document.getElementById('scrollToOnas');
-    if (onasButton) {
-        onasButton.addEventListener('click', function (event) {
-            event.preventDefault();
-            smoothScrollTo('#onas'); // Прокрутка до элемента с идентификатором "onas"
-        });
-    }
-</script>
-
 </body>
 </html>
